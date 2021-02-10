@@ -1,6 +1,7 @@
-## Algorithm
+## 코테준비
+<h3>공부 순서</h3>
+----
 
-## 공부 순서
 - Recursion
 - Queue
 - Stack
