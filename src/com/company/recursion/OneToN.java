@@ -2,6 +2,12 @@ package com.company.recursion;
 
 import java.util.Scanner;
 
+/**
+ * 1. 정부 1부터 n까지 출력하는 재귀함수를 설계하시오.
+ * 2. 정수 n부터 1까지 출력하는 재귀함수를 설계하시오.
+ *
+ * 이 문제는 반복문 for, while 등을 이용하여 풀수 없습니다.
+ */
 public class OneToN {
 
     //1 ~ n 까지 출력
