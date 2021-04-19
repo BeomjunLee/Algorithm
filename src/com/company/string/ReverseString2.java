@@ -17,19 +17,23 @@ public class ReverseString2 {
      * 첫 줄에 알파벳만 뒤집힌 문자열을 출력합니다.
      */
     public static String solution(String str) {
-        char[] originalWord = str.toCharArray();
-        char[] reverseWord = new StringBuilder(str).reverse().toString().toCharArray();
-
-        int length = originalWord.length;
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < length; i++) {
-            if(Character.isAlphabetic(originalWord[i]))
-                sb.append(reverseWord[i]);
-            else if(!Character.isAlphabetic(originalWord[i]))
-                sb.append(originalWord[i]);
+        int left = 0;
+        int right = str.length() - 1;
+        char[] result = str.toCharArray();
+        while (left < right) {
+            if (!Character.isAlphabetic(result[left]))
+                left++;
+            else if (!Character.isAlphabetic(result[right]))
+                right--;
+            else {
+                char tmp = result[left];
+                result[left] = result[right];
+                result[right] = tmp;
+                left++;
+                right--;
+            }
         }
-        return sb.toString();
+        return String.valueOf(result);
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
