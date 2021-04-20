@@ -24,13 +24,12 @@ public class PrimeNumber {
         int count = 0;
         result[0] = 1; result[1] = 1;
 
-        for (int i = 2; i < num; i++) {
+        for (int i = 2; i < result.length; i++) {
             if(result[i] == 0)
                 count++;
-            for (int j = i; j < num; j=j+result[i]) {
-            }
+            for (int j = i; j < result.length; j=j+i)
+                result[j] = 1;
         }
-
         return count;
     }
 
