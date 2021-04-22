@@ -1,5 +1,6 @@
 package com.company.array;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -23,8 +24,29 @@ public class ReversePrimeNumber {
      * 예시 출력 1
      * 23 2 73 2 3
      */
-    public static int[] solution(int num, int[] nums) {
-       
+    public static ArrayList<Integer> solution(int num, int[] nums) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            int tmp = nums[i];
+            int res = 0;
+            while (tmp > 0) {
+                int remain = tmp % 10;
+                res = res * 10 + remain;
+                tmp = tmp / 10;
+            }
+            if (isPrime(res)) {
+                result.add(res);
+            }
+        }
+        return result;
+    }
+
+    public static boolean isPrime(int num) {
+        if(num == 1) return false;
+        for (int i = 2; i < num; i++) {
+            if(num % i == 0) return false;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -34,7 +56,8 @@ public class ReversePrimeNumber {
         for (int i = 0; i < num; i++) {
             nums[i] = scan.nextInt();
         }
-        int[] result = solution(num, nums);
-        System.out.println(result);
+        ArrayList<Integer> result = solution(num, nums);
+        for(int r : result)
+            System.out.print(r + " ");
     }
 }
