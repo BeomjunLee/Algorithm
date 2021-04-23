@@ -2,7 +2,6 @@ package com.company.array;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class ReversePrimeNumber {
     /**
