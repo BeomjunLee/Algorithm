@@ -30,13 +30,33 @@ public class Peaks {
      * 10
      */
     public static int solution(int num, int[][] arr) {
-        
+        int[][] mountain = new int[num + 2][num + 2];
+        int result = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                mountain[i + 1][j + 1] = arr[i][j];
+            }
+        }
+        for (int i = 1; i < mountain.length - 1; i++) {
+            for (int j = 1; j < mountain.length - 1; j++) {
+                int peak = mountain[i][j];
+                if(peak > mountain[i][j - 1]
+                        && peak > mountain[i][j + 1]
+                        && peak > mountain[i - 1][j]
+                        && peak > mountain[i + 1][j])
+                    result++;
+            }
+            
+        }
+        return result;
     }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int num = scan.nextInt();
         int[][] arr = new int[num][num];
+
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < num; j++) {
                 arr[i][j] = scan.nextInt();
