@@ -1,4 +1,4 @@
-package com.company.array;
+package com.company.hardQuestion;
 
 import java.util.Scanner;
 
