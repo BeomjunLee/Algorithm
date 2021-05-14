@@ -56,6 +56,25 @@ public class SalesSort {
         }
         return result;
     }
+
+    public static List<Integer> solution2(int num1, int num2, int[] arr) {
+        List<Integer> result = new ArrayList<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < num2 - 1; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        int left = 0;
+        for (int right = num2 - 1; right < num1; right++) {
+
+            map.put(arr[right], map.getOrDefault(arr[right], 0) + 1);
+            result.add(map.size());
+            map.put(arr[left], map.get(arr[left]) - 1);
+            if(map.get(arr[left]) == 0)
+                map.remove(arr[left]);
+            left++;
+        }
+        return result;
+    }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int num1 = scan.nextInt();
