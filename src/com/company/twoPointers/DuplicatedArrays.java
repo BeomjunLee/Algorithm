@@ -30,14 +30,10 @@ public class DuplicatedArrays {
 
     public static List<Integer> solution(int num1, int[] arr1, int num2, int[] arr2) {
         Set<Integer> arrList = new HashSet<>();
-        for (int i : arr1)
-            arrList.add(i);
+        Arrays.stream(arr1).forEach(a -> arrList.add(a));
 
         List<Integer> result = new ArrayList<>();
-        for (int i : arr2) {
-            if (!arrList.add(i))
-                result.add(i);
-        }
+        Arrays.stream(arr2).filter(a -> !arrList.add(a)).forEach(a -> result.add(a));
 
         return result.stream().sorted().collect(Collectors.toList());
     }

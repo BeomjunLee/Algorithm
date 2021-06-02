@@ -5,21 +5,21 @@ import java.util.Scanner;
 public class BubbleSort {
 
     public static int[] solution(int[] arr) {
-        int length = arr.length;
-        for (int j = 0; j < arr.length; j++) {
-            for (int i = 0; i < length; i++) {
-                if(i + 1 == length)
-                    break;
-                if (arr[i] > arr[i + 1]) {
-                    int tmp = arr[i + 1];
-                    arr[i + 1] = arr[i];
-                    arr[i] = tmp;
+
+        for (int i = arr.length - 1; i >= 0 ; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
                 }
             }
-            length--;
         }
-
         return arr;
+    }
+
+    private static void swap(int[] arr, int j, int i) {
+        int tmp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = tmp;
     }
 
     public static void main(String[] args) {
