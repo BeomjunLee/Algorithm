@@ -8,7 +8,7 @@ public class CustomQueue<T> implements Custom<T> {
     private Node<T> last = null;
     private int size = 0;
 
-    public class Node<T>{
+    private class Node<T> {
         private T data;
         private Node<T> next;
 
@@ -21,14 +21,15 @@ public class CustomQueue<T> implements Custom<T> {
         Node<T> node = new Node<>(data);
         size++;
 
-        if(last != null) {
+        if (last != null) {
             last.next = node;
         }
 
         last = node;
 
-        if(first == null)
-            first = last;
+        if (first == null) {
+            first = node;
+        }
     }
 
     public T poll() {
@@ -41,6 +42,22 @@ public class CustomQueue<T> implements Custom<T> {
         return data;
     }
 
+    public Node<T> search(T data) {
+        Node<T> node = this.first;
+
+        while (node != null) {
+            if (data == node.data) {
+                break;
+            } else {
+                if (node.next == null) {
+                    throw new NoSuchElementException();
+                }else
+                    node = node.next;
+            }
+        }
+        return node;
+    }
+    
     @Override
     public boolean isEmpty() {
         if(size <= 0 || first == null)
